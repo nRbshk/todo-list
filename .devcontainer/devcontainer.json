@@ -18,7 +18,7 @@
 			"extensions": [
 				"dbaeumer.vscode-eslint",
 				"rvest.vs-code-prettier-eslint",
-				"octref.vetur",
+				"vue.volar",
 				"Vue.vscode-typescript-vue-plugin",
 				"bradlc.vscode-tailwindcss"
 			]
