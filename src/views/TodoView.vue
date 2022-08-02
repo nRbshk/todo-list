@@ -1,13 +1,8 @@
 <script setup>
-import { useTodoStore } from "@/stores/todo.js";
-import TodoList from "@/components/TodoList.vue";
-
-const todoStore = useTodoStore();
-
-const todos = todoStore.uncompleted;
+import TodoWrapper from "@/components/TodoWrapper.vue";
 </script>
 <template>
   <main>
-    <TodoList :todos="todos" />
+    <TodoWrapper />
   </main>
 </template>

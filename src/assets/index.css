@@ -4,16 +4,20 @@
 
 @layer base {
   body {
-    @apply flex h-screen w-screen justify-center rounded-md bg-slate-100 font-serif text-xl text-stone-600;
+    @apply flex h-screen max-h-screen
+    w-screen
+    justify-center
+    overflow-x-hidden 
+    overflow-y-hidden 
+    rounded-md border-stone-600 
+    bg-slate-100 font-serif text-xl
+    text-stone-600;
   }
   header {
     @apply flex h-8 items-center border-b-[1px] border-stone-600 py-6;
   }
-  footer {
-    @apply flex h-8;
-  }
   main {
-    @apply flex h-screen flex-col items-center py-6;
+    @apply flex h-[90%] flex-col items-center py-6;
   }
 }
 
@@ -21,8 +25,13 @@
   #app {
     max-width: 1440px;
     max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    @apply flex flex-1 flex-col;
+  }
+  .fancy-scrollbar::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .fancy-scrollbar::-webkit-scrollbar-thumb {
+    @apply cursor-pointer rounded-md bg-purple-600;
   }
 }

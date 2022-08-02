@@ -9,5 +9,4 @@ import MenuBar from "@/components/MenuBar.vue";
     <MenuBar />
   </header>
   <RouterView />
-  <footer>footer</footer>
 </template>

@@ -9,23 +9,16 @@ const menuItems = [
 ];
 
 const usedLibraries = [
-  {
-    icon: "/vue.svg",
-    link: "https://vuejs.org/",
-  },
-  {
-    icon: "/pinia.svg",
-    link: "https://pinia.vuejs.org/",
-  },
-  {
-    icon: "/tailwind.svg",
-    link: "https://tailwindcss.com/",
-  },
+  { icon: "/vue.svg", link: "https://vuejs.org/" },
+  { icon: "/pinia.svg", link: "https://pinia.vuejs.org/" },
+  { icon: "/tailwind.svg", link: "https://tailwindcss.com/" },
+  { icon: "/vitejs.svg", link: "https://vitejs.dev/" },
+  { icon: "/vitest.svg", link: "https://vitest.dev/" },
 ];
 </script>
 <template>
   <div class="flex gap-2">
-    Used
+    <span>Design with</span>
     <a v-for="library of usedLibraries" :key="library" :href="library.link">
       <img :src="library.icon" class="h-8 w-8 transition-all active:scale-110" :alt="library.link" />
     </a>

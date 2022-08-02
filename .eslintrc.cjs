@@ -33,47 +33,47 @@ module.exports = {
     "simple-import-sort/exports": "error",
     "vue/require-prop-types": "off",
     "vue/require-default-prop": "off",
-    "vue/attributes-order": [
-      "error",
-      {
-        order: [
-          "DEFINITION",
-          "LIST_RENDERING",
-          "CONDITIONALS",
-          "RENDER_MODIFIERS",
-          "GLOBAL",
-          ["UNIQUE", "SLOT"],
-          "TWO_WAY_BINDING",
-          "OTHER_DIRECTIVES",
-          "OTHER_ATTR",
-          "EVENTS",
-          "CONTENT",
-        ],
-        alphabetical: false,
-      },
-    ],
-    "vue/max-attributes-per-line": [
-      "error",
-      {
-        singleline: {
-          max: 4,
-        },
-        multiline: {
-          max: 4,
-        },
-      },
-    ],
-    "vue/html-self-closing": [
-      "error",
-      {
-        html: {
-          void: "always",
-          normal: "always",
-          component: "always",
-        },
-        svg: "always",
-        math: "always",
-      },
-    ],
+    // "vue/attributes-order": [
+    //   "error",
+    //   {
+    //     order: [
+    //       "DEFINITION",
+    //       "LIST_RENDERING",
+    //       "CONDITIONALS",
+    //       "RENDER_MODIFIERS",
+    //       "GLOBAL",
+    //       ["UNIQUE", "SLOT"],
+    //       "TWO_WAY_BINDING",
+    //       "OTHER_DIRECTIVES",
+    //       "OTHER_ATTR",
+    //       "EVENTS",
+    //       "CONTENT",
+    //     ],
+    //     alphabetical: false,
+    //   },
+    // ],
+    // "vue/max-attributes-per-line": [
+    //   "error",
+    //   {
+    //     singleline: {
+    //       max: 4,
+    //     },
+    //     multiline: {
+    //       max: 4,
+    //     },
+    //   },
+    // ],
+    // "vue/html-self-closing": [
+    //   "error",
+    //   {
+    //     html: {
+    //       void: "always",
+    //       normal: "always",
+    //       component: "always",
+    //     },
+    //     svg: "always",
+    //     math: "always",
+    //   },
+    // ],
   },
 };

@@ -1,27 +1,41 @@
 <script setup>
-import { ref } from "vue";
+import { CheckIcon, TrashIcon } from "@heroicons/vue/outline";
 
 const props = defineProps(["todos"]);
-const emits = defineEmits(["addTodo", "completeTodo"]);
-const newTodoText = ref("");
+const emits = defineEmits(["toggle", "remove"]);
 
-const onAddTodo = () => emits("addTodo", { text: newTodoText.value });
-const onMarkCompleteTodo = (index) => emits("completeTodo", { index: index });
+const onToggleComplete = (todo) => {
+  emits("toggle", {
+    text: todo.text,
+    id: todo.id,
+    completed: !todo.completed,
+  });
+};
+const onRemove = (todo) => emits("remove", todo);
 </script>
+
 <template>
-  <div
-    class="flex h-16 w-8/12 justify-center rounded-md bg-white p-4 focus-within:outline focus-within:outline-1 focus-within:outline-purple-700"
-  >
-    <input v-model="newTodoText" placeholder="Wanna make..." class="flex-1 rounded-md py-2 outline-none" />
-    <button
-      tabindex="0"
-      class="w-1/12 rounded-md bg-purple-600 text-white transition-all duration-75 ease-linear hover:bg-purple-700 active:bg-purple-800"
-      @click="onAddTodo"
-    >
-      Add
-    </button>
-  </div>
-  <div class="flex flex-col py-4">
-    <div v-for="(todo, index) of todos" :key="todo.id">{{ index }} {{ todo.text }}</div>
+  <div class="fancy-scrollbar overflow-y-auto">
+    <div v-for="todo of props.todos" :key="todo.id" class="flex items-start gap-2 p-2" data-testid="todo-item">
+      <!-- wrap svg elements on div for attribute data-testid -->
+      <div data-testid="todo-checkbox">
+        <component
+          :is="todo.completed ? CheckIcon : 'div'"
+          class="h-8 w-8 cursor-pointer rounded-md border-2 transition-all duration-300 active:bg-purple-800"
+          :class="{ 'bg-purple-600 text-white': todo.completed }"
+          @click="onToggleComplete(todo)"
+        />
+      </div>
+      <span data-testid="todo-text" class="flex-grow transition-all" :class="todo.completed ? 'line-through' : ''">
+        {{ todo.text }}
+      </span>
+      <div data-testid="todo-remove">
+        <TrashIcon
+          class="h-6 w-6 cursor-pointer rounded-md hover:text-purple-700 active:text-purple-700"
+          title="Remove"
+          @click="onRemove(todo)"
+        />
+      </div>
+    </div>
   </div>
 </template>
