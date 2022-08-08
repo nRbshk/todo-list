@@ -18,30 +18,32 @@ const onToggleCompleteTodo = (todo) => todoStore.update(todo);
 const onRemoveTodo = (todo) => todoStore.remove(todo);
 </script>
 <template>
-  <div
-    class="flex h-16 w-6/12 justify-center rounded-md bg-white p-4 focus-within:outline focus-within:outline-1 focus-within:outline-purple-700"
-    data-testid="new-todo-form"
-  >
-    <input v-model="newTodoText" placeholder="Wanna make..." class="flex-1 rounded-md py-2 outline-none" />
-    <button
-      tabindex="0"
-      class="w-1/12 rounded-md bg-purple-600 text-white transition-all duration-75 ease-linear hover:bg-purple-700 active:bg-purple-800"
-      title="Add"
-      @click="onAddTodo"
+  <div class="w-full">
+    <form
+      class="mt-20 flex h-16 w-full rounded-md bg-white p-2 outline outline-1 outline-purple-700"
+      data-testid="new-todo-form"
+      @submit.prevent="onAddTodo"
     >
-      Add
-    </button>
+      <input v-model="newTodoText" placeholder="Wanna make..." class="flex-1 rounded-md py-2 outline-none" />
+      <button
+        type="submit"
+        class="ml-4 w-[10%] rounded-md bg-purple-500 text-white transition-all ease-linear hover:bg-pink-500"
+        title="Add"
+      >
+        Add
+      </button>
+    </form>
+    <div class="w-full border-b-2 py-2" />
+    <TabsPanel class="flex max-h-[100%] w-full flex-col" :tabs="['All', 'Active', 'Completed']">
+      <template #All>
+        <TodoList :todos="todoStore.items" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
+      </template>
+      <template #Active>
+        <TodoList :todos="todoStore.active" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
+      </template>
+      <template #Completed>
+        <TodoList :todos="todoStore.completed" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
+      </template>
+    </TabsPanel>
   </div>
-  <div class="w-full border-b-2 py-2" />
-  <TabsPanel class="flex max-h-[100%] w-full flex-col" :tabs="['All', 'Active', 'Completed']">
-    <template #All>
-      <TodoList :todos="todoStore.items" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
-    </template>
-    <template #Active>
-      <TodoList :todos="todoStore.active" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
-    </template>
-    <template #Completed>
-      <TodoList :todos="todoStore.completed" @remove="onRemoveTodo" @toggle="onToggleCompleteTodo" />
-    </template>
-  </TabsPanel>
 </template>

@@ -1,12 +1,17 @@
 <script setup>
-import { RouterView } from "vue-router";
-
 import MenuBar from "@/components/MenuBar.vue";
+import TodoWrapper from "@/components/TodoWrapper.vue";
 </script>
 
 <template>
   <header>
-    <MenuBar />
+    <div class="content-wrapper">
+      <MenuBar />
+    </div>
   </header>
-  <RouterView />
+  <main>
+    <div class="content-wrapper">
+      <TodoWrapper />
+    </div>
+  </main>
 </template>

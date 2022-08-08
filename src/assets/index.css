@@ -4,34 +4,27 @@
 
 @layer base {
   body {
-    @apply flex h-screen max-h-screen
-    w-screen
-    justify-center
-    overflow-x-hidden 
-    overflow-y-hidden 
-    rounded-md border-stone-600 
-    bg-slate-100 font-serif text-xl
-    text-stone-600;
+    @apply h-[100vh] w-[100vw] overflow-hidden bg-slate-200 font-serif text-xl tracking-widest;
   }
+
   header {
-    @apply flex h-8 items-center border-b-[1px] border-stone-600 py-6;
+    @apply fixed flex h-16 w-full items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white;
   }
-  main {
+  /* main {
     @apply flex h-[90%] flex-col items-center py-6;
-  }
+  } */
 }
 
 @layer components {
-  #app {
-    max-width: 1440px;
-    max-height: 100vh;
-    @apply flex flex-1 flex-col;
-  }
   .fancy-scrollbar::-webkit-scrollbar {
     width: 0.5rem;
   }
 
   .fancy-scrollbar::-webkit-scrollbar-thumb {
     @apply cursor-pointer rounded-md bg-purple-600;
+  }
+
+  .content-wrapper {
+    @apply m-auto flex w-[1440px];
   }
 }
